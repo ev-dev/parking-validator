@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import Home from './components/Home'
-import Scanner from './Scanner'
+import Scanner from './components/Scanner'
 
 const Routes = () => (
   <Switch>

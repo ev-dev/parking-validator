@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run build-dev & npm run serve-dev",
     "build-dev": "cross-env NODE_ENV=development webpack -w",
-    "serve-dev": "nodemon server/index.js --watch server/dev",
+    "serve-dev": "nodemon server/dev/index.js --watch server/dev",
     "test-build": "cross-env NODE_ENV=development webpack --bail --progress -d",
     "test": "nodemon tests/testServer.js --watch tests",
     "start": "npm run build && npm run serve",

@@ -20,7 +20,7 @@ app
 
   /* --- Serve React App --- */
   .get('/bundle.js', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'bundle.js'))
+    res.sendFile(path.join(__dirname, '..', '..', 'public', 'bundle.js'))
   })
 
 
@@ -33,7 +33,7 @@ app
 
   /* --- Serve Root HTML --- */
   .get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'))
+    res.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'))
   })
 
 
