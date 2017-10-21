@@ -21,19 +21,17 @@ class Scanner extends Component {
       decoder: {
         readers: [ barcodeType ]
       }
-    }, function (err, data='DEFAULT') {
+    }, function (err) {
       if (err) {
         console.log(err);
         return
       }
       console.log("Initialization finished. Ready to start");
-      console.log('data in init', data)
       Quagga.start()
     })
 
-    Quagga.onDetected((err, data) => {
-      if (err) console.log('Error...', err)
-      else console.log('Barcode Detected!...', data)
+    Quagga.onDetected(data => {
+      if (data) console.log('Barcode Detected!...', data)
     })
   }
 
