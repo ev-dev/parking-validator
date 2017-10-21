@@ -31,7 +31,7 @@ class Scanner extends Component {
     })
 
     Quagga.onDetected(data => {
-      if (data) console.log('Barcode Detected!...', data)
+      if (!data) console.error('')
     })
   }
 
