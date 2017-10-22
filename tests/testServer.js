@@ -2,9 +2,11 @@ const path = require('path'),
   express = require('express'),
   bodyParser = require('body-parser'),
   axios = require('axios'),
-  app = express()
-
-const token = 'Bearer JFWJVLPWG3joEV5iY_nSUurd4CxsVAQTfJKlIA-NvM3jPCgOMfwEGwdCygtVGwuAE-jMCioe3Zum-wVDo3V0dNlB3kf1aUS_KV6YsAuxMkcgqep9sbpgzARLPklKKX9h1iW-wgRmZRDYSHm18r5tqvpLbJoH-SBxFGSBcrPoKKQ'
+  app = express(),
+  Wemo = require('wemo-client'),
+  wemo = new Wemo()
+  
+  const token = 'Bearer JFWJVLPWG3joEV5iY_nSUurd4CxsVAQTfJKlIA-NvM3jPCgOMfwEGwdCygtVGwuAE-jMCioe3Zum-wVDo3V0dNlB3kf1aUS_KV6YsAuxMkcgqep9sbpgzARLPklKKX9h1iW-wgRmZRDYSHm18r5tqvpLbJoH-SBxFGSBcrPoKKQ'
 
 const testBarcode = "21945001497552"
 
@@ -14,6 +16,53 @@ app
   }))
   .use(bodyParser.json())
 
+  .get('/on', (req, res, next) => {
+    wemo.discover(function (err, deviceInfo) {
+      console.log('Wemo Device Found: %j', deviceInfo);
+
+      // Get the client for the found device
+      var client = wemo.client(deviceInfo);
+
+      // You definitely want to listen to error events (e.g. device went offline),
+      // Node will throw them as an exception if they are left unhandled  
+      client.on('error', function (err) {
+        console.log('Error: %s', err.code);
+      });
+
+      // Handle BinaryState events
+      client.on('binaryState', function (value) {
+        console.log('Binary State changed to: %s', value);
+      });
+
+      // Turn the switch on
+      client.setBinaryState(1);
+    });
+    res.sendStatus(200)
+  })
+  
+  .get('/off', (req, res, next) => {
+    wemo.discover(function (err, deviceInfo) {
+      console.log('Wemo Device Found: %j', deviceInfo);
+
+      // Get the client for the found device
+      var client = wemo.client(deviceInfo);
+
+      // You definitely want to listen to error events (e.g. device went offline),
+      // Node will throw them as an exception if they are left unhandled  
+      client.on('error', function (err) {
+        console.log('Error: %s', err.code);
+      });
+
+      // Handle BinaryState events
+      client.on('binaryState', function (value) {
+        console.log('Binary State changed to: %s', value);
+      });
+
+      // Turn the switch on
+      client.setBinaryState(0);
+    });
+    res.sendStatus(200)
+  })
 
   .get('/auth', (req, res, next) => {
     //@ts-ignore
@@ -69,6 +118,7 @@ app
         return userId
       })
       .then(userId => {
+        console
         // @ts-ignore
         axios({
           method: 'get',

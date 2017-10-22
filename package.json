@@ -23,7 +23,8 @@
     "quagga": "^0.12.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "wemo-client": "^0.14.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
