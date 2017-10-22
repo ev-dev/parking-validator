@@ -4,7 +4,7 @@ const path = require('path'),
   axios = require('axios'),
   app = express()
 
-const token = 'Bearer 20Pebk8kfgypf6K3wXZTgTAF3MOlJNZg9eFUnzdos2iLxZCs5UHahfxb_SM69yzXhRyaHSQpK3BIRNhmh1jwtRYO9S-yIm02WB-l5OXh8KmzjvxA52mf1KAmGrUBJZtvnngTKr44USAsxDylvNBJKI4oefJd1C0BDJCaM8N3Xuo'
+const token = 'Bearer JFWJVLPWG3joEV5iY_nSUurd4CxsVAQTfJKlIA-NvM3jPCgOMfwEGwdCygtVGwuAE-jMCioe3Zum-wVDo3V0dNlB3kf1aUS_KV6YsAuxMkcgqep9sbpgzARLPklKKX9h1iW-wgRmZRDYSHm18r5tqvpLbJoH-SBxFGSBcrPoKKQ'
 
 const testBarcode = "21945001497552"
 
