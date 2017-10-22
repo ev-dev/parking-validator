@@ -63,6 +63,7 @@ app
       // entries[0] assumes one ID per user which may not be guaranteed
       .then(res => res.data.entries[0].link)
       .then(userURL => {
+        console.log('\nuserURL', userURL)
         const userArr = userURL.split('/')
         const userId = userArr[userArr.length - 1]
         return userId
